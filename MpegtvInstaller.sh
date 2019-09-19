@@ -7,10 +7,7 @@ echo -e "${jeshile} │  installing necessary components         │ \e[0m"
 echo -e "${jeshile} └──────────────────────────────────────────┘ \e[0m"
 echo " "
 apt update && apt upgrade -y
-apt-get install locate python dos2unix aria2 curl sudo zip htop psmisc ffmpeg libavcodec57 libavutil55 libavfilter6 libavformat57 mysql-server libmysqlclient20 -y
-curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-wget -O /usr/local/bin/speedtest-cli https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py
-chmod +x /usr/local/bin/speedtest-cli
+apt-get install ffmpeg libavcodec57 libavutil55 libavfilter6 libavformat57 mysql-server libmysqlclient20 -y
 echo " "
 echo " "
 echo -e "${jeshile} ┌──────────────────────────────────────────┐ \e[0m"
@@ -32,16 +29,22 @@ echo -e "${jeshile}	┌───────────────────
 echo -e "${jeshile}	│[R] Getting MpegTv Informations                                         │	\e[0m"
 echo -e "${jeshile}	└────────────────────────────────────────────────────────────────────────┘	\e[0m"
 echo " "
-read -p "Enter Master Port : "  masterport
-read -p "Enter Slave Port : "  slaveport
-echo "CONTROL PORT: $masterport" >>/var/mpegtv/mpegtv.cfg
-echo "CONTROL PORT: $slaveport" >>/var/mpegtv/slvod.cfg
+read -p "Enter Master http Port : "  masterport
+read -p "Enter mysql host : "  sqlhost
+read -p "Enter mysql username : "  sqluser
+read -p "Enter mysql password : "  sqlpass
+read -p "Enter mysql database : "  sqldatabase
+echo "http port: $masterport
+mysql server: $sqlhost
+mysql username: $sqluser
+mysql password: $sqlpass
+mysql database: $sqldatabase
+FILE IP2COUNTRY: \"/var/mpegtv/IpToCountry.csv\"" >>/var/mpegtv/mpegtv.cfg
 echo " "
 echo -e "${jeshile} ┌────────────────────────────────────────────────┐ \e[0m"
 echo -e "${jeshile} │[+] installation Completed                      │ \e[0m"
 echo -e "${jeshile} └────────────────────────────────────────────────┘ \e[0m"
 sleep 8
-# reboot
 echo " "
 echo " "
 echo -e "${jeshile} ┌─────────────────────────----┐ \e[0m"
